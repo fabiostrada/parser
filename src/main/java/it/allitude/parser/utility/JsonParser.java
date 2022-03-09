@@ -13,7 +13,7 @@ public class JsonParser {
         return "\"logicalOperation\":\"" + logicalOperationOfGroups.trim() + "\"";
     }
 
-    private static String toJson(String condition) {
+    private static String toJson(String conditions) {
         return "   \"destinatario\":{\n" +
                 "\t  \"value\":\"pippo\",\n" +
                 "\t  \"operation\":\"contains\"\n" +
