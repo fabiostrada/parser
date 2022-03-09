@@ -1,7 +1,5 @@
 package it.allitude.parser.utility;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,6 +11,10 @@ public class StringUtil {
 
     public static Boolean isNullOrEmpty(String str) {
         return str == null || str.isEmpty();
+    }
+
+    public static Boolean isNotEmpty(String str) {
+        return str != null && !str.isEmpty();
     }
 
     public static List<String> split(String str, String separator) {
