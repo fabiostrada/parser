@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.allitude.parser.model.impl.FilterFatture;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
@@ -16,6 +15,7 @@ import static it.allitude.parser.utility.RegExUtility.REGEX_GROUP;
 import static it.allitude.parser.utility.RegExUtility.matcherOf;
 import static it.allitude.parser.utility.StringUtil.isNotEmpty;
 import static it.allitude.parser.utility.StringUtil.isNullOrEmpty;
+import static java.util.Objects.isNull;
 
 public class Parser {
 
@@ -24,8 +24,8 @@ public class Parser {
     private static ObjectMapper mapper = new ObjectMapper();
 
     public Parser(String filter, Class<?> clazz) {
-        if (isNullOrEmpty(filter) && Objects.isNull(clazz)) {
-            throw new RuntimeException("Filter or clazz is null");
+        if (isNullOrEmpty(filter) && isNull(clazz)) {
+            throw new RuntimeException("Filter or class is null");
         }
         this.filter = filter;
         this.clazz = clazz;
