@@ -32,20 +32,20 @@ public class Parser {
     }
 
     public<T> T build() throws JsonProcessingException {
-        List<String> groupsOfConditions = groupsOfConditionsFrom();
-        String logicalOperationOfGroups = logicalOperationOfGroupsFrom();
+        List<String> groupsOfConditions = groupsOfConditions();
+        String logicalOperationOfGroups = logicalOperationOfGroups();
         String contentJsonOfAllConditions = contentJsonOfAllConditions(groupsOfConditions);
         String contentJsonOfLogicalOperationOfGroup = contentJsonOfLogicalOperationOfGroup(logicalOperationOfGroups);
         String finalJson = "{" + contentJsonOfAllConditions + "," + contentJsonOfLogicalOperationOfGroup  + "}";
         return (T)mapper.readValue(finalJson, clazz);
     }
 
-    private List<String> groupsOfConditionsFrom() {
+    private List<String> groupsOfConditions() {
         Matcher matcherOfRegexGroup = matcherOf(filter, REGEX_GROUP);
         return matcherOfRegexGroup.results().map(this::groupOf).collect(Collectors.toList());
     }
 
-    private String logicalOperationOfGroupsFrom() {
+    private String logicalOperationOfGroups() {
         Matcher matcherOfRegexGroup = matcherOf(filter, REGEX_GROUP);
         String logicalOperation = null;
         while(matcherOfRegexGroup.find()) {
