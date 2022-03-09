@@ -1,5 +1,7 @@
 package it.allitude.parser.utility;
 
+import it.allitude.parser.model.operation.LogicalOperation;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,6 +14,11 @@ public class RegExUtility {
         return pattern.matcher(filterValue);
     }
 
+    public static String regexGroup() {
+        return REGEX_GROUP
+                .replace("and", LogicalOperation.and.getValue())
+                .replace("or", LogicalOperation.or.getValue());
+    }
 }
 
 
